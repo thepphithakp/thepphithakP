@@ -1,83 +1,71 @@
-- 👋 Hi, I’m thappithak phadjhanthuek (PLUEM)
-- 👀 I’m interested in Technology
-- 🌱 I’m currently learning new technology in software development
-- 💞️ I’m looking to collaborate on web development
-- 📫 How to reach me on my linkedin
+# Thepphithak Patchanthuek
 
-# Hello and Welcome!
+Backend engineer in Bangkok. Currently Senior Software Engineer at Krungsri.
+Before that SCB, Allianz Ayudhya, and CP All (Gosoft).
 
-Hi, I'm Pluem!
+![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
+![Java](https://img.shields.io/badge/Java-E76F00?style=flat-square&logo=openjdk&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
+![Elasticsearch](https://img.shields.io/badge/Elasticsearch-005571?style=flat-square&logo=elasticsearch&logoColor=white)
+![Filebeat](https://img.shields.io/badge/Filebeat-005571?style=flat-square&logo=beats&logoColor=white)
+![Kibana](https://img.shields.io/badge/Kibana-005571?style=flat-square&logo=kibana&logoColor=white)
 
-I'm a passionate software developer with over three years of experience in full-stack development, specializing in both front-end and back-end technologies. My journey has taken me through diverse industries, including retail and life insurance, where I've crafted solutions that enhance customer experiences and optimize business processes.
+Five years in retail, banking and life insurance. Most of that work was taking
+systems that already existed and moving them somewhere they could be deployed and
+watched properly: containers, CI/CD, centralized logs, metrics and alerts.
 
-## About Me
+## Vertex
 
-I enjoy tackling complex problems and working on innovative projects that make a real difference. My goal is to leverage my skills to build valuable and impactful solutions for businesses and customers alike.
+A multi-domain app I build and run on my own. iOS client, four Go services, a GraphQL
+BFF, and the Kubernetes setup underneath. It runs on an actual cluster with CI/CD and
+alerting, not docker-compose on my laptop.
 
-## Experience
+| repo | what it is |
+| --- | --- |
+| [vertex-bff](https://github.com/thepphithakp/vertex-bff) | GraphQL BFF. gqlgen, depth and query-cost limits, an LLM endpoint |
+| [vertex-auth-service](https://github.com/thepphithakp/vertex-auth-service) | JWT with asymmetric keys, RBAC, Google sign-in |
+| [pet-service](https://github.com/thepphithakp/pet-service) | First domain. Transactional outbox, ETag avatar caching |
+| [vertex-event-service](https://github.com/thepphithakp/vertex-event-service) | Where the other services publish their events |
+| [vertex-backoffice](https://github.com/thepphithakp/vertex-backoffice) | Admin UI, Preact + Vite behind nginx |
+| [vertex-migrations](https://github.com/thepphithakp/vertex-migrations) | Flyway migrations, run as a Kubernetes Job |
+| [vertex-observability](https://github.com/thepphithakp/vertex-observability) | Filebeat/Elasticsearch/Kibana for logs, Prometheus/Grafana/Alertmanager for the rest |
+| [vertex-app](https://github.com/thepphithakp/vertex-app) | iOS client, SwiftUI + Apollo |
 
-### Back End Developer
-**SCB – Siam Commercial Bank**  
-_Jul 2024 - Present (2 months)_  
-*Chatuchak, Bangkok City, Thailand*  
-Working with Go, Spring Boot, and other technologies to develop and enhance backend services.
+[All of them in one list](https://github.com/thepphithakp?tab=repositories&q=topic%3Avertex-superapp)
 
-### Full-stack Developer
-**Allianz Ayudhya**  
-_Dec 2022 - Jun 2024 (1 year 7 months)_  
-*Payment Gateway Services:*  
-- Implemented features for various payment methods including credit card, PromptPay QR, billing barcode, and more.
-- Developed a new service for online direct debit registration and payment with KrungSri bank.
+Three things that broke along the way:
 
-_eKYC for Tele Sales Services:_  
-- Developed a service for eKYC to verify customer identities via telesales.
+- The pet list response was 10 MB because avatars were base64'd into every item.
+  Moved them to their own endpoint with ETag caching, list is about 4 KB now.
+- p95 latency jumped and I spent a while looking at the database. It was a CPU limit
+  throttling bcrypt.
+- `/metrics` had been returning 500 in production for weeks and nothing complained.
+  Pods were Ready, CI was green, the dashboards just showed no data. Fiber returns a
+  string backed by a buffer it reuses between requests, and Prometheus had stored that
+  as a label key, so the method label had turned into garbage like `GETETE`.
 
-_Authorization Services:_  
-- Created an OAuth 2 service for authentication and authorization with a prototype project for easy implementation.
+## Work
 
-For every service I initiated, I wrote Dockerfiles for building container images and Kubernetes deployment files for containerized environments. I also managed deployment processes including:
-- **Configuration Management:** Implemented configuration management practices to ensure consistent and reliable deployments.
-- **Secret Management:** Utilized secure methods for managing sensitive information and secrets.
-- **CI/CD:** Designed and maintained CI/CD pipelines using GitHub Actions to automate integration and deployment processes.
-- **Infrastructure as Code (IaC):** Leveraged Kubernetes and Helm for Infrastructure as Code, managing resources like MongoDB and Redis. Helm charts were used to define, install, and upgrade complex Kubernetes applications, ensuring efficient and scalable deployment of infrastructure components.
+| | |
+| --- | --- |
+| Krungsri | Senior Software Engineer, 2026 to now. API and interface design, gateway and core banking integration. |
+| SCB | Backend Developer, 2024 to 2026. Digital account opening. Moved 1990s PowerBuilder desktop apps onto Kubernetes. Led the ELK rollout. |
+| Allianz Ayudhya | Full-stack Developer, 2022 to 2024. Payment gateways (Omise, SCB, KBANK, PromptPay QR), eKYC, OAuth2, incident automation. |
+| CP All / Gosoft | Software Engineer, 2020 to 2022. Retail systems behind 7-Eleven Thailand. Message queues at over a million messages a day, SAP and CRM integration. |
 
-### Software Engineer
-**Gosoft (Thailand)**  
-_Oct 2020 - Nov 2022 (2 years 2 months)_  
-Experienced in all phases of the SDLC, including coding, testing, deployment, and maintenance.  
-- Managed transaction processes and developed systems to support business operations.
-- Implemented solutions for data export/import and resolved technical issues effectively.
+## Tools
 
-## Technical Skills
+| | |
+| --- | --- |
+| Languages | Go, Java (Spring Boot, Spring Batch), TypeScript |
+| APIs | REST, OpenAPI, OAuth2, JWT with asymmetric keys, RBAC |
+| Data | PostgreSQL, MySQL, Oracle, MongoDB, Redis, Flyway |
+| Platform | Kubernetes, Helm, Docker, GitHub Actions, Jenkins |
+| Observability | Prometheus, Grafana, Alertmanager, Filebeat, Elasticsearch, Kibana |
+| Messaging | RabbitMQ, MQTT, transactional outbox |
 
-- **Backend:** Java Spring Boot, Spring Batch, Java EE/J2EE, JAX-RS, EJB, Batch Processing
-- **Frontend:** ReactJs, JSF, JSP, HTML, JavaScript, CSS
-- **Text Formats:** XML, JSON
-- **Database:** Oracle SQL
-- **Version Control:** SVN
-- **Containerization:** Docker
-- **Orchestration:** Kubernetes
-- **Deployment & Configuration:** Docker, Kubernetes, Helm, Configuration Management
-- **Infrastructure as Code (IaC):** Kubernetes, Helm for managing infrastructure components like MongoDB and Redis
-- **Secret Management:** Secure storage and handling of sensitive information
-- **CI/CD:** GitHub Actions for continuous integration and continuous deployment
-
-## Education
-
-**Bachelor of Science - BS, Information Technology**  
-Kasetsart University  
-_2016 - 2020_  
-Senior project: Small dust measurement system with IoT device  
-Tech Stack: Java, C, RabbitMQ, JavaScript, MySQL, CSS, ChartJS, Bootstrap, Google Firebase, Google Maps API, NodeMCU
-
----
-
-Feel free to explore my profile for more details or contact me directly. I’m looking forward to connecting with you and exploring new opportunities together.
-
-
-
-
-<!---
-thepphithakP/thepphithakP is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+thepphithak.ph@gmail.com · [LinkedIn](https://www.linkedin.com/in/thepphithak-patchanthuek/)
