@@ -1,7 +1,7 @@
 # Thepphithak Patchanthuek
 
 Backend engineer in Bangkok. Currently Senior Software Engineer at Krungsri.
-Before that SCB, Allianz Ayudhya, and CP All (Gosoft).
+Before that Siam Commercial Bank, Allianz Ayudhya, and CP All (Gosoft).
 
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-E76F00?style=flat-square&logo=openjdk&logoColor=white)
@@ -53,7 +53,7 @@ Three things that broke along the way:
 | | |
 | --- | --- |
 | Krungsri | Senior Software Engineer, 2026 to now. API and interface design, gateway and core banking integration. |
-| SCB | Backend Developer, 2024 to 2026. Digital account opening. Moved 1990s PowerBuilder desktop apps onto Kubernetes. Led the ELK rollout. |
+| Siam Commercial Bank (SCB) | Backend Developer, 2024 to 2026. Digital account opening. Moved 1990s PowerBuilder desktop apps onto Kubernetes. Led the ELK rollout. |
 | Allianz Ayudhya | Full-stack Developer, 2022 to 2024. Payment gateways (Omise, SCB, KBANK, PromptPay QR), eKYC, OAuth2, incident automation. |
 | CP All / Gosoft | Software Engineer, 2020 to 2022. Retail systems behind 7-Eleven Thailand. Message queues at over a million messages a day, SAP and CRM integration. |
 
